@@ -40,11 +40,13 @@ document.addEventListener('DOMContentLoaded', function () {
     div.appendChild(h6);
 
     // Change color to random array of colors
-    let headers = document.querySelector(div).children;
-    document.addEventListener("dblclick", function () {
-        let colorArray = ["red", "blue", "yellow", "purple", "orange", "green", "pink", "brown"];
-        headers[0].style.color = colorArray[Math.floor(Math.random() * colorArray.length)]
-    });
+    let headers = [h1, h2, h3, h4, h5, h6];
+    for (let i = 0; i < headers.length; i++) {
+        headers[i].addEventListener("dblclick", function () {
+            let colorArray = ["red", "blue", "yellow", "purple", "orange", "green", "pink", "brown"];
+            headers[i].style.color = colorArray[Math.floor(Math.random() * colorArray.length)]
+        });
+    };
 
 
 
@@ -57,11 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
         ul.appendChild(li);
         document.body.appendChild(ul);
         list++;
-        li.addEventListener("click", function(){
+        li.addEventListener("click", function () {
             let colorArray = ["red", "blue", "yellow", "purple", "orange", "green", "pink", "brown"];
             li.style.color = colorArray[Math.floor(Math.random() * colorArray.length)]
         })
-        li.addEventListener("dblclick", function() {
+        li.addEventListener("dblclick", function () {
             li.style.display = "none";
         })
     };
@@ -71,6 +73,6 @@ document.addEventListener('DOMContentLoaded', function () {
     btn[0].addEventListener("click", function () {
         newListItem("click");
     });
-    
+
 });
 
