@@ -40,24 +40,37 @@ document.addEventListener('DOMContentLoaded', function () {
     div.appendChild(h6);
 
     // Change color to random array of colors
+    let headers = document.querySelector(div).children;
     document.addEventListener("dblclick", function () {
-        let colorArray = ["red", "blue", "yellow", "purple", "orange", "green", "pink", "brown"]
-        h1.style.color = colorArray[Math.floor(Math.random() * colorArray.length)]
+        let colorArray = ["red", "blue", "yellow", "purple", "orange", "green", "pink", "brown"];
+        headers[0].style.color = colorArray[Math.floor(Math.random() * colorArray.length)]
     });
+
+
+
+    let list = 1;
+    function newListItem() {
+        let ul = document.createElement('ul');
+        let li = document.createElement('li');
+        let item = document.createTextNode(`This is list item ${list}`);
+        li.appendChild(item);
+        ul.appendChild(li);
+        document.body.appendChild(ul);
+        list++;
+        li.addEventListener("click", function(){
+            let colorArray = ["red", "blue", "yellow", "purple", "orange", "green", "pink", "brown"];
+            li.style.color = colorArray[Math.floor(Math.random() * colorArray.length)]
+        })
+        li.addEventListener("dblclick", function() {
+            li.style.display = "none";
+        })
+    };
+
 
     let btn = document.getElementsByClassName('button');
     btn[0].addEventListener("click", function () {
-        btn.onClick = function () {
-            list = 1;
-            let ul = document.createElement('ul');
-            let li = document.createElement('li');
-            let item = document.createTextNode(`This is list item ${list}`);
-            li.appendChild(item);
-            ul.appendChild(li);
-            document.body.appendChild(ul);
-        };
-
+        newListItem("click");
     });
-
+    
 });
 
